@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <h1>Assets</h1>
+    <div id='page-content'>
+
+    <!-- HTML form for creating a product -->
+<div class="input area">
+  <form action='create_asset.php' method='post'>
+     <table class='table table-hover table-responsive table-bordered'>
+        <tr>
+            <td>Name</td>
+            <td><input type='text' name='name' class='form-control' /></td>
+        </tr> 
+                <button type="submit" class="btn btn-primary">Create</button>
+            </td>
+        </tr>
+     </table>
+  </form>
+</div>
+
+<div class="jumbotron">
+    <table class='table table-hover table-responsive table-bordered'>
+   {
+  echo "<tr>";
+  echo "<td>".$row['id_asset']."</td>";
+  echo "<td>".$row['id_asset_type']."</td>";
+  echo "<td>".$row['name']."</td>";
+  echo "</table>";}
+
+   }
+ </div>
+ </div>
+
+ <script type='text/javascript'>
+$(document).ready(function(){  
+    // will show the create product form
+    $('#create-asset').click(function(){
+        // change page title
+        changePageTitle('Create Asset');
+          
+        // hide create product button
+        $('#create-assets').hide();
+         
+        // show read products button
+        $('#read-assets').show();
+         
+        // fade out effect first
+        $('#page-content').fadeOut('slow', function(){
+            $('#page-content').load('create_form.php', function(){ 
+                             
+                // fade in effect
+                $('#page-content').fadeIn('slow');
+            });
+        });
+    });
+});
+</script>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
